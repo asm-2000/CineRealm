@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CineRealm.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CineRealm"
+    xmlns:pages="clr-namespace:CineRealm.Pages"
+    Title="CineRealm"
+    FlyoutWidth="250"
+    Shell.FlyoutBackdrop="Transparent"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.ForegroundColor="White"
+    Shell.NavBarIsVisible="True"
+    Shell.TabBarIsVisible="False">
+
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout>
+            <Label
+                Margin="0,30,0,0"
+                FontAttributes="Bold"
+                FontFamily="cursive"
+                FontSize="35"
+                HorizontalTextAlignment="Center"
+                Text="Cine Realm"
+                TextColor="#00fff5" />
+            <Image
+                Margin="0,40,0,80"
+                HeightRequest="70"
+                Source="cine_logo.png"
+                WidthRequest="70" />
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="home.png"
+            Route="MainPage" />
+        <ShellContent
+            Title="Movies"
+            ContentTemplate="{DataTemplate pages:MoviesPage}"
+            Icon="movie_logo.png"
+            Route="MoviesPage"/>
+        <ShellContent
+            Title="TV Series"
+            ContentTemplate="{DataTemplate pages:TVSeriesPage}"
+            Icon="tv_logo.png"
+            Route="TVSeriesPage"/>
+    </FlyoutItem>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.3*">
+                <Image
+                    Margin="5"
+                    HeightRequest="30"
+                    Source="{Binding FlyoutIcon}" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="60"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding Title}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+</Shell>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="CineRealm.Views.CardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="this">
+    <VerticalStackLayout>
+        <Border
+            BackgroundColor="#333333"
+            BindingContext="{x:Reference this}"
+            Stroke="Transparent"
+            StrokeShape="RoundRectangle 10"
+            StrokeThickness="2"
+            WidthRequest="120">
+            <VerticalStackLayout Spacing="2">
+                <Image
+                    Aspect="AspectFill"
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    WidthRequest="150">
+                    <Image.Source>
+                        <UriImageSource Uri="{Binding ImageSource}" />
+                    </Image.Source>
+                </Image>
+                <Label
+                    Margin="10,0"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding MovieTitle}"
+                    HeightRequest="35"
+                    MaxLines="2"
+                    TextColor="White" />
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="9"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding MovieRating, StringFormat='IMDB: {0}'}"
+                        TextColor="Gold" />
+                    <Image
+                        HeightRequest="7"
+                        Source="rating.png"
+                        WidthRequest="7" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center" Margin="0,0,0,5">
+                    <Image
+                        Margin="10,0,0,0"
+                        HeightRequest="7"
+                        Source="play.png"
+                        WidthRequest="7" />
+                    <Label
+                        FontSize="9"
+                        MaxLines="4"
+                        Text="{Binding MovieDuration, StringFormat='Duration: {0}'}"
+                        TextColor="LightGray" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentView>

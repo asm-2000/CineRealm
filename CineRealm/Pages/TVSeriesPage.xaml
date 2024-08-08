@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CineRealm.Pages.TVSeriesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:CineRealm.Models"
+    xmlns:viewmodel="clr-namespace:CineRealm.ViewModels"
+    xmlns:views="clr-namespace:CineRealm.Views"
+    Title="Browse Series"
+    x:DataType="viewmodel:SeriesViewModel">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Padding="20">
+            <VerticalStackLayout IsVisible="{Binding HasLoaded}">
+                <Label Margin="0,0,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="TOP 10 "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="IMDB: "
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding TopIMDBSeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Label
+                    Margin="0,10,0,20"
+                    FontAttributes="Bold"
+                    FontSize="25"
+                    Text="Browse Series By Genre: "
+                    TextColor="{StaticResource PrimaryTextTheme}" />
+
+                <Label Margin="0,0,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Series: "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Drama"
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding DramaSeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Label Margin="0,20,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Series: "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Comedy"
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding ComedySeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Label Margin="0,20,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Series: "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Action"
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding ActionSeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Label Margin="0,20,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Series: "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Horror"
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding HorrorSeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Label Margin="0,20,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Series: "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Crime"
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding CrimeSeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Label Margin="0,20,0,10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Series: "
+                                TextColor="{StaticResource White}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                Text="Science Fiction"
+                                TextColor="{StaticResource Gold}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <BoxView BackgroundColor="{StaticResource Gray300}" HeightRequest="1" />
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                <ScrollView
+                    Margin="0,10"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CollectionView
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding ScifiSeries}"
+                        VerticalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Movie">
+                                <FlexLayout Direction="Row">
+                                    <views:CardView
+                                        Margin="5,0"
+                                        ImageSource="{Binding Poster}"
+                                        MovieDuration="{Binding Runtime}"
+                                        MovieRating="{Binding ImdbRating}"
+                                        MovieTitle="{Binding Title}">
+                                        <views:CardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SeriesViewModel}}, Path=HandleCardTappedCommand}" CommandParameter="{Binding Title}" />
+                                        </views:CardView.GestureRecognizers>
+                                    </views:CardView>
+                                </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout IsVisible="{Binding IsLoading}" VerticalOptions="Center">
+                <ActivityIndicator
+                    IsRunning="{Binding IsLoading}"
+                    IsVisible="{Binding IsLoading}"
+                    VerticalOptions="Center"
+                    Color="{StaticResource PrimaryTextTheme}" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

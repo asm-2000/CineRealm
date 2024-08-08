@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CineRealm.Pages.MovieDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:CineRealm.ViewModels"
+    IconImageSource="movie_logo.png"
+    x:DataType="viewmodel:MovieDetailViewModel">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0,30,20" Spacing="10">
+            <Label
+                FontAttributes="Bold"
+                FontSize="35"
+                HorizontalTextAlignment="Start"
+                Text="{Binding MovieDetail.Title}"
+                TextColor="WhiteSmoke" />
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    Text="{Binding MovieDetail.Released}"
+                    TextColor="#00fff5" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="End"
+                    Text="{Binding MovieDetail.Rated, StringFormat='Rated: {0}'}"
+                    TextColor="Gold" />
+            </FlexLayout>
+            <Image Aspect="AspectFit" Source="{Binding MovieDetail.Poster}" />
+            <FlexLayout Direction="Row" VerticalOptions="Center">
+                <Image
+                    HeightRequest="20"
+                    Source="duration.png"
+                    WidthRequest="20"
+                    VerticalOptions="Center"/>
+                <Label Text="{Binding MovieDetail.Runtime, StringFormat='  Duration: {0}'}" TextColor="LightGray" />
+            </FlexLayout>
+            <Label
+                FontSize="16"
+                Text="{Binding MovieDetail.Genre, StringFormat='Genre: {0}'}"
+                TextColor="Gray" />
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                <Border Padding="5" StrokeShape="RoundRectangle 4">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label
+                            FontSize="16"
+                            Text="{Binding MovieDetail.ImdbRating, StringFormat='IMDB:  {0}'}"
+                            TextColor="Gold" />
+                        <Image
+                            HeightRequest="15"
+                            Source="rating.png"
+                            VerticalOptions="Center"
+                            WidthRequest="15" />
+                    </HorizontalStackLayout>
+                </Border>
+                <Label
+                    FontSize="16"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding MovieDetail.ImdbVotes, StringFormat='( {0} )'}"
+                    TextColor="Gray"
+                    VerticalOptions="Center" />
+            </FlexLayout>
+            <BoxView HeightRequest="1" Color="Gray" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="17"
+                Text="Plot:"
+                TextColor="#00fff5" />
+            <Label
+                FontSize="15"
+                LineBreakMode="TailTruncation"
+                MaxLines="{Binding MaxTextLine}"
+                Text="{Binding MovieDetail.Plot}"
+                TextColor="LightGray">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowMorePlotTextCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView HeightRequest="1" Color="Gray" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
